@@ -72,7 +72,7 @@ var Engine = (function(global) {
         {
           ctx.fillStyle="red";
           ctx.font = "bold 60px Arial";
-          ctx.fillText("Loos",200,300);
+          ctx.fillText("Loser",200,300);
         }
         else {
           ctx.fillStyle="transperant";
