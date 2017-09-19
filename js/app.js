@@ -1,5 +1,6 @@
 // Enemies our player must avoid
 var wins,loser;
+var score =0;
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -33,10 +34,10 @@ Enemy.prototype.render = function() {
 };
 Enemy.prototype.checkCollisions = function()
 {
-  if (this.x < player.x + player.width/2 &&
-    this.x + this.width/2 > player.x &&
-    this.y < player.y + player.height/2 &&
-    this.height/2 + this.y > player.y)
+  if (this.x < player.x + player.width/2.5 &&
+    this.x + this.width/2.5 > player.x &&
+    this.y < player.y + player.height/2.5 &&
+    this.height/2.5 + this.y > player.y)
     {
       loser=true;
       audio_loser.play();

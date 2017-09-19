@@ -59,6 +59,7 @@ var Engine = (function(global) {
         win.requestAnimationFrame(main);
         if (wins)
         {
+          score++;
           ctx.fillStyle="green";
           ctx.font = "bold 60px Arial";
           ctx.fillText("Win",200,300);
@@ -78,6 +79,9 @@ var Engine = (function(global) {
           ctx.fillStyle="transperant";
           ctx.fillText("",200,300);
         }
+        ctx.fillStyle="#fff";
+        ctx.font = "bold 16px Arial";
+        ctx.fillText("Score: "+ score,400,100);
 
     }
 
