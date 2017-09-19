@@ -68,7 +68,7 @@ var Engine = (function(global) {
           ctx.fillStyle="transperant";
           ctx.fillText("",200,300);
         }
-       if (loos)
+       if (loser)
         {
           ctx.fillStyle="red";
           ctx.font = "bold 60px Arial";

@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-  var wins,loos;
+  var wins,loser;
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -38,7 +38,7 @@ Enemy.prototype.checkCollisions = function()
     this.y < player.y + player.height/2 &&
     this.height/2 + this.y > player.y)
     {
-      loos=true;
+      loser=true;
       setTimeout(function(){ player.reset(); }, 2000);
 
     }
@@ -90,7 +90,7 @@ Enemy.prototype.checkCollisions = function()
 
 
   Player.prototype.reset =function() {
-    loos=false;
+    loser=false;
     wins=false;
     this.x=200;
     this.y=400;
