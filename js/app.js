@@ -1,4 +1,5 @@
 // Enemies our player must avoid
+  var wins,loos;
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -8,7 +9,7 @@ var Enemy = function(x,y) {
   this.sprite = 'images/enemy-bug.png';
   this.y=y;
   this.x=x;
-  this.speed= Math.floor(Math.random() * (60 - 25) + 25);
+  this.speed= Math.floor(Math.random() * (30 - 6) + 6);
   this.width=171;
   this.height=101;
 };
@@ -32,11 +33,14 @@ Enemy.prototype.render = function() {
 };
 Enemy.prototype.checkCollisions = function()
 {
-  if (this.x < player.x + player.width &&
-    this.x + this.width > player.x &&
-    this.y < player.y + player.height &&
-    this.height + this.y > player.y)
+  if (this.x < player.x + player.width/2 &&
+    this.x + this.width/2 > player.x &&
+    this.y < player.y + player.height/2 &&
+    this.height/2 + this.y > player.y)
     {
+      loos=true;
+      setTimeout(function(){ player.reset(); }, 2000);
+
     }
   }
   // Now write your own player class
@@ -45,12 +49,18 @@ Enemy.prototype.checkCollisions = function()
   var Player = function ()
   {
     this.character = 'images/char-boy.png';
-    this.x=Math.random() * (400 - 0) + 0;
-    this.y=Math.random() * (400 - 270) + 270;
+    this.x=200;
+    this.y=400;
     this.width=171;
     this.height=101;
   }
+
   Player.prototype.update = function () {
+    if(this.y<0)
+    {
+     wins =true;
+      setTimeout(function(){ player.reset(); }, 2000);
+      }
 
   }
   Player.prototype.render = function () {
@@ -60,24 +70,30 @@ Enemy.prototype.checkCollisions = function()
   {
     switch(key) {
       case 'left':
-      this.x = this.x - 83;
+      if(this.x>0)
+      this.x = this.x - 100;
       break;
       case 'up':
-      this.y = this.y - 101;
+      if(this.y>36)
+      this.y = this.y - 90;
       break;
       case 'right':
-      this.x = this.x + 83;
+      if(this.x<400)
+      this.x = this.x + 100;
       break;
       case 'down':
-      this.y = this.x + 101;
+      if(this.y<400)
+      this.y = this.y + 90;
       break;
     }
   }
 
 
   Player.prototype.reset =function() {
-    this.x=Math.random() * (400 - 0) + 0;
-    this.y=Math.random() * (400 - 270) + 270;
+    loos=false;
+    wins=false;
+    this.x=200;
+    this.y=400;
   }
   // Now instantiate your objects.
   // Place all enemy objects in an array called allEnemies

@@ -26,6 +26,7 @@ var Engine = (function(global) {
 
     canvas.width = 505;
     canvas.height = 606;
+    canvas.id ="game_area";
     doc.body.appendChild(canvas);
 
     /* This function serves as the kickoff point for the game loop itself
@@ -56,6 +57,28 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
+        if (wins)
+        {
+          ctx.fillStyle="green";
+          ctx.font = "bold 60px Arial";
+          ctx.fillText("Win",200,300);
+
+        }
+        else {
+          ctx.fillStyle="transperant";
+          ctx.fillText("",200,300);
+        }
+       if (loos)
+        {
+          ctx.fillStyle="red";
+          ctx.font = "bold 60px Arial";
+          ctx.fillText("Loos",200,300);
+        }
+        else {
+          ctx.fillStyle="transperant";
+          ctx.fillText("",200,300);
+        }
+
     }
 
     /* This function does some initial setup that should only occur once,
