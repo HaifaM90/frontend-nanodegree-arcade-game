@@ -57,19 +57,13 @@ var Engine = (function(global) {
          * function again as soon as the browser is able to draw another frame.
          */
         win.requestAnimationFrame(main);
-        if (wins)
+        if (player.win==1)
         {
-          score++;
           ctx.fillStyle="green";
           ctx.font = "bold 60px Arial";
-          ctx.fillText("Win",200,300);
-
+          ctx.fillText("Win",200,300);s
         }
-        else {
-          ctx.fillStyle="transperant";
-          ctx.fillText("",200,300);
-        }
-       if (loser)
+        else if (player.win==0)
         {
           ctx.fillStyle="red";
           ctx.font = "bold 60px Arial";
@@ -81,7 +75,7 @@ var Engine = (function(global) {
         }
         ctx.fillStyle="#fff";
         ctx.font = "bold 16px Arial";
-        ctx.fillText("Score: "+ score,400,100);
+        ctx.fillText("Score: "+ player.score,400,100);
 
     }
 
@@ -92,7 +86,8 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        main();
+        setTimeout(function(){ main(); }, 2000);
+
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -188,6 +183,14 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
+      ctx.fillStyle = "#428711";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(Resources.get('images/bg.png'), 0, 0);
+        ctx.drawImage(Resources.get('images/char-boy.png'), 160, 250);
+        ctx.drawImage(Resources.get('images/char-pink-girl.png'), 260, 250);
+        ctx.font = "bold 20px Arial";
+        ctx.fillText("Press 1 to chose Boy and press 2 to chose Girl",20,430);
+        console.log("reset");
         // noop
     }
 
@@ -200,7 +203,9 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-boy.png',
+        'images/char-pink-girl.png',
+        'images/bg.png'
     ]);
     Resources.onReady(init);
 

@@ -1,6 +1,4 @@
 // Enemies our player must avoid
-var wins,loser;
-var score =0;
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -32,15 +30,17 @@ Enemy.prototype.update = function(dt) {
 Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 Enemy.prototype.checkCollisions = function()
 {
-  if (this.x < player.x + player.width/2.5 &&
-    this.x + this.width/2.5 > player.x &&
-    this.y < player.y + player.height/2.5 &&
-    this.height/2.5 + this.y > player.y)
+  if (this.x < player.x + player.width/2.25 &&
+    this.x + this.width/2.25 > player.x &&
+    this.y < player.y + player.height/2.25 &&
+    this.height/2.25 + this.y > player.y)
     {
-      loser=true;
+      player.win=0;
       audio_loser.play();
+      player.life--;
       setTimeout(function(){ player.reset(); }, 2000);
 
     }
@@ -52,15 +52,18 @@ Enemy.prototype.checkCollisions = function()
   {
     this.character = 'images/char-boy.png';
     this.x=200;
-    this.y=400;
+    this.y=435;
     this.width=171;
     this.height=101;
+    this.life=3;
+    this.score=0;
+    this.win=-1;
   }
 
   Player.prototype.update = function () {
-    if(this.y<0)
-    {
-      wins =true;
+    if(this.y<=0)
+    {  this.win =1;
+      player.score++;
       audio_winning.play();
       setTimeout(function(){ player.reset(); }, 2000);
     }
@@ -77,7 +80,7 @@ Enemy.prototype.checkCollisions = function()
       this.x = this.x - 100;
       break;
       case 'up':
-      if(this.y>36)
+      if(this.y>39)
       this.y = this.y - 90;
       break;
       case 'right':
@@ -88,15 +91,21 @@ Enemy.prototype.checkCollisions = function()
       if(this.y<400)
       this.y = this.y + 90;
       break;
+      case 'girl':
+      this.character = 'images/char-pink-girl.png';
+      break;
+      case 'boy':
+      this.character = 'images/char-boy.png';
+      break;
     }
+    audio_step.play();
   }
 
 
   Player.prototype.reset =function() {
-    loser=false;
-    wins=false;
+    this.win=-1;
     this.x=200;
-    this.y=400;
+    this.y=435;
   }
   // Now instantiate your objects.
   // Place all enemy objects in an array called allEnemies
@@ -110,6 +119,7 @@ Enemy.prototype.checkCollisions = function()
   var allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5];
   var audio_loser = new Audio('sounds/loser.mp3');
   var audio_winning = new Audio('sounds/winning.mp3');
+  var audio_step = new Audio('sounds/step.wav');
   // This listens for key presses and sends the keys to your
   // Player.handleInput() method. You don't need to modify this.
   document.addEventListener('keyup', function(e) {
@@ -117,7 +127,9 @@ Enemy.prototype.checkCollisions = function()
       37: 'left',
       38: 'up',
       39: 'right',
-      40: 'down'
+      40: 'down',
+      49: 'boy',
+      50: 'girl'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);
