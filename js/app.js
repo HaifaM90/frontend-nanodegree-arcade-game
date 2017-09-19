@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-  var wins,loser;
+var wins,loser;
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
@@ -39,6 +39,7 @@ Enemy.prototype.checkCollisions = function()
     this.height/2 + this.y > player.y)
     {
       loser=true;
+      audio_loser.play();
       setTimeout(function(){ player.reset(); }, 2000);
 
     }
@@ -58,9 +59,10 @@ Enemy.prototype.checkCollisions = function()
   Player.prototype.update = function () {
     if(this.y<0)
     {
-     wins =true;
+      wins =true;
+      audio_winning.play();
       setTimeout(function(){ player.reset(); }, 2000);
-      }
+    }
 
   }
   Player.prototype.render = function () {
@@ -105,6 +107,8 @@ Enemy.prototype.checkCollisions = function()
   var enemy4 = new Enemy(100,50);
   var enemy5 = new Enemy(300,150);
   var allEnemies = [enemy1,enemy2,enemy3,enemy4,enemy5];
+  var audio_loser = new Audio('sounds/loser.mp3');
+  var audio_winning = new Audio('sounds/winning.mp3');
   // This listens for key presses and sends the keys to your
   // Player.handleInput() method. You don't need to modify this.
   document.addEventListener('keyup', function(e) {
