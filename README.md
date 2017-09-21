@@ -11,8 +11,8 @@ For detailed instructions on how to get started, check out this [guide](https://
 ## How to work
 
 1. in first screen as below you need to
-*click (1) to chose boy character
-*click (2) to chose girl character
+* click (1) to chose boy character
+* click (2) to chose girl character
 
 then the game will start auto.
 ![Alt text](images/step1.png)
