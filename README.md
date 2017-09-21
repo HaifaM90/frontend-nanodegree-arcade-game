@@ -8,7 +8,7 @@ For detailed instructions on how to get started, check out this [guide](https://
 # Classic Arcade Game
 #### you must try to cross your player to other side without touch any bugs on your way
 
-##How to work
+## How to work
 
 1. in first screen as below you need to
 *click (1) to chose boy character
@@ -19,4 +19,4 @@ then the game will start auto.
 
 2. to moves on game area use arrows keyboard
 ![Alt text](images/step2.png)
-##Good Luck and have fun
+## Good Luck and have fun
