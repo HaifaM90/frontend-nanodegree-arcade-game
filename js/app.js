@@ -63,9 +63,10 @@ Enemy.prototype.checkCollisions = function()
   Player.prototype.update = function () {
     if(this.y<=0)
     {  this.win =1;
-      player.score++;
       audio_winning.play();
-      setTimeout(function(){ player.reset(); }, 2000);
+      setTimeout(function(){
+          player.score++;
+           player.reset(); }, 2000);
     }
 
   }
@@ -124,7 +125,7 @@ Enemy.prototype.checkCollisions = function()
       37: 'left',
       38: 'up',
       39: 'right',
-      40: 'down',
+      40: 'down'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);

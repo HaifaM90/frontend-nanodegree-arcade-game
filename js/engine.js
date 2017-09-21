@@ -86,7 +86,6 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        //setTimeout(function(){ main(); }, 2000);
         main();
     }
 
@@ -183,14 +182,7 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-      // ctx.fillStyle = "#428711";
-      // ctx.fillRect(0, 0, canvas.width, canvas.height);
-      // ctx.drawImage(Resources.get('images/bg.png'), 0, 0);
-      //   ctx.drawImage(Resources.get('images/char-boy.png'), 160, 250);
-      //   ctx.drawImage(Resources.get('images/char-pink-girl.png'), 260, 250);
-      //   ctx.font = "bold 20px Arial";
-      //   ctx.fillText("Press 1 to chose Boy and press 2 to chose Girl",20,430);
-      //
+
         // noop
     }
 
@@ -204,8 +196,7 @@ var Engine = (function(global) {
         'images/grass-block.png',
         'images/enemy-bug.png',
         'images/char-boy.png',
-        'images/char-pink-girl.png',
-        'images/bg.png'
+        'images/char-pink-girl.png'
     ]);
     Resources.onReady(init);
 
