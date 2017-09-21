@@ -48,9 +48,9 @@ Enemy.prototype.checkCollisions = function()
   // Now write your own player class
   // This class requires an update(), render() and
   // a handleInput() method.
-  var Player = function ()
+  var Player = function (char)
   {
-    this.character = 'images/char-boy.png';
+    this.character = char;
     this.x=200;
     this.y=435;
     this.width=171;
@@ -91,12 +91,6 @@ Enemy.prototype.checkCollisions = function()
       if(this.y<400)
       this.y = this.y + 90;
       break;
-      case 'girl':
-      this.character = 'images/char-pink-girl.png';
-      break;
-      case 'boy':
-      this.character = 'images/char-boy.png';
-      break;
     }
     audio_step.play();
   }
@@ -110,7 +104,10 @@ Enemy.prototype.checkCollisions = function()
   // Now instantiate your objects.
   // Place all enemy objects in an array called allEnemies
   // Place the player object in a variable called player
-  var player = new Player();
+  if (window.location.href.split('=')[1]=='girl')
+  var player = new Player('images/char-pink-girl.png');
+  else
+  var player = new Player('images/char-boy.png');
   var enemy1 = new Enemy(400,220);
   var enemy2 = new Enemy(0,220);
   var enemy3 = new Enemy(220,140);
@@ -128,8 +125,6 @@ Enemy.prototype.checkCollisions = function()
       38: 'up',
       39: 'right',
       40: 'down',
-      49: 'boy',
-      50: 'girl'
     };
 
     player.handleInput(allowedKeys[e.keyCode]);

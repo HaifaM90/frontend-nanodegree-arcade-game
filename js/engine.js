@@ -61,7 +61,7 @@ var Engine = (function(global) {
         {
           ctx.fillStyle="green";
           ctx.font = "bold 60px Arial";
-          ctx.fillText("Win",200,300);s
+          ctx.fillText("Win",200,300);
         }
         else if (player.win==0)
         {
@@ -86,8 +86,8 @@ var Engine = (function(global) {
     function init() {
         reset();
         lastTime = Date.now();
-        setTimeout(function(){ main(); }, 2000);
-
+        //setTimeout(function(){ main(); }, 2000);
+        main();
     }
 
     /* This function is called by main (our game loop) and itself calls all
@@ -183,14 +183,14 @@ var Engine = (function(global) {
      * those sorts of things. It's only called once by the init() method.
      */
     function reset() {
-      ctx.fillStyle = "#428711";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.drawImage(Resources.get('images/bg.png'), 0, 0);
-        ctx.drawImage(Resources.get('images/char-boy.png'), 160, 250);
-        ctx.drawImage(Resources.get('images/char-pink-girl.png'), 260, 250);
-        ctx.font = "bold 20px Arial";
-        ctx.fillText("Press 1 to chose Boy and press 2 to chose Girl",20,430);
-        console.log("reset");
+      // ctx.fillStyle = "#428711";
+      // ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // ctx.drawImage(Resources.get('images/bg.png'), 0, 0);
+      //   ctx.drawImage(Resources.get('images/char-boy.png'), 160, 250);
+      //   ctx.drawImage(Resources.get('images/char-pink-girl.png'), 260, 250);
+      //   ctx.font = "bold 20px Arial";
+      //   ctx.fillText("Press 1 to chose Boy and press 2 to chose Girl",20,430);
+      //
         // noop
     }
 
