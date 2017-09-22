@@ -4,15 +4,15 @@
 ## How to install game
 
 1. go to (https://github.com/HaifaM90/frontend-nanodegree-arcade-game) then click on (clone or download)
-* Download Zip
-* unzip the folder
-* double click on (index.html)
+..1. Download Zip
+..2. unzip the folder
+..3. double click on (index.html) so your browser will open new window and display start screen.
 
 ## How to work
 
 1. in first screen as below you need to
-* click (1) to chose boy character
-* click (2) to chose girl character
+..1. click (1) to chose boy character
+..2. click (2) to chose girl character
 
 then the game will start auto.
 ![Alt text](images/step1.png)
