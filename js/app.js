@@ -1,3 +1,4 @@
+//use strict;
 // Enemies our player must avoid
 var Enemy = function(x,y) {
   // Variables applied to each of our instances go here,
@@ -32,8 +33,8 @@ Enemy.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 //collisions method use common algrothim and update it as need it
-Enemy.prototype.checkCollisions = function()
-{
+Enemy.prototype.checkCollisions = function(){
+
   if (this.x < player.x + player.width/2.25 &&
     this.x + this.width/2.25 > player.x &&
     this.y < player.y + player.height/2.25 &&
@@ -42,10 +43,12 @@ Enemy.prototype.checkCollisions = function()
       player.win=0;
       //play audio
       audio_loser.play();
-      setTimeout(function(){ player.reset(); }, 2000);
+      setTimeout(function(){
+        player.reset();
+      }, 2000);
 
     }
-  }
+  };
   // Now write your own player class
   // This class requires an update(), render() and
   // a handleInput() method.
@@ -59,21 +62,21 @@ Enemy.prototype.checkCollisions = function()
     this.life=3;
     this.score=0;
     this.win=-1;
-  }
+  };
 
   Player.prototype.update = function () {
     if(this.y<=0)
     {  this.win =1;//set winner
       audio_winning.play();
       setTimeout(function(){
-        player.score++;
-        player.reset(); }, 2000);
+        player.reset();
+       }, 2000);
       }
 
-    }
+    };
     Player.prototype.render = function () {
       ctx.drawImage(Resources.get(this.character), this.x, this.y);
-    }
+    };
     Player.prototype.handleInput =function (key)
     {
       switch(key) {
@@ -95,13 +98,21 @@ Enemy.prototype.checkCollisions = function()
         break;
       }
       audio_step.play();
-    }
+    };
 
     Player.prototype.reset =function() {
+      if(this.win==1){
+        this.score++;}
+      else if(this.win==0){
+        this.life--;}
+      if(this.life==0){
+        this.score=0;
+        this.life=3;
+      }
       this.win=-1;//set to new game
       this.x=200;
       this.y=435;
-    }
+    };
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player

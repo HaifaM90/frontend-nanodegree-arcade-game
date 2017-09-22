@@ -57,25 +57,23 @@ var Engine = (function(global) {
     * function again as soon as the browser is able to draw another frame.
     */
     win.requestAnimationFrame(main);
-    if (player.win==1)
-    {
-      ctx.fillStyle="green";
-      ctx.font = "bold 60px Arial";
-      ctx.fillText("Win",200,300);
-    }
-    else if (player.win==0)
-    {
-      ctx.fillStyle="red";
-      ctx.font = "bold 60px Arial";
-      ctx.fillText("Loser",200,300);
-    }
-    else {
-      ctx.fillStyle="transperant";
-      ctx.fillText("",200,300);
-    }
-    ctx.fillStyle="#fff";
-    ctx.font = "bold 16px Arial";
-    ctx.fillText("Score: "+ player.score,400,100);
+    // if (player.win==1){
+    //   ctx.fillStyle="green";
+    //   ctx.font = "bold 60px Arial";
+    //   ctx.fillText("Win",200,300);
+    // }
+    // else if (player.win==0){
+    //   ctx.fillStyle="red";
+    //   ctx.font = "bold 60px Arial";
+    //   ctx.fillText("Loser",200,300);
+    // }
+    // else {
+    //   ctx.fillStyle="transperant";
+    //   ctx.fillText("",200,300);
+    // }
+    // ctx.fillStyle="#fff";
+    // ctx.font = "bold 16px Arial";
+    // ctx.fillText("Score: "+ player.score,400,100);
 
   }
 
@@ -160,6 +158,24 @@ var Engine = (function(global) {
     }
 
     renderEntities();
+    if (player.win==1){
+      ctx.fillStyle="green";
+      ctx.font = "bold 60px Arial";
+      ctx.fillText("Win",200,300);
+    }
+    else if (player.win==0){
+      ctx.fillStyle="red";
+      ctx.font = "bold 60px Arial";
+      ctx.fillText("Loser",200,300);
+    }
+    else {
+      ctx.fillStyle="transperant";
+      ctx.fillText("",200,300);
+    }
+    ctx.fillStyle="#fff";
+    ctx.font = "bold 16px Arial";
+    ctx.fillText("Life: "+player.life+"  Score: "+ player.score,370,100);
+
   }
 
   /* This function is called by the render function and is called on each game
