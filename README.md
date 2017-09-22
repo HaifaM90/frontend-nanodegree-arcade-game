@@ -4,9 +4,9 @@
 ## How to install game
 
 1. go to (https://github.com/HaifaM90/frontend-nanodegree-arcade-game) then click on (clone or download)
-*. Download Zip
-*. unzip the folder
-*. double click on (index.html)
+* Download Zip
+* unzip the folder
+* double click on (index.html)
 
 ## How to work
 
