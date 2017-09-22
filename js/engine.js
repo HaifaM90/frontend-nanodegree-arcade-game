@@ -125,6 +125,8 @@ var Engine = (function(global) {
   * they are just drawing the entire screen over and over.
   */
   function render() {
+    //Clear Canvas
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
     /* This array holds the relative URL to the image used
     * for that particular row of the game level.
     */
